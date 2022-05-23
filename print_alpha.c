@@ -8,15 +8,19 @@
  * if a flag is passed to _printf
  * Return: number of char printed
  */
-int print_string(va_list l, flags_t *f)
+int print_string(va_list l)
 {
-    char *s = va_arg(l, char *);
+    int i, count = 0;
+    char *str;
 
-    (void)f;
+    str = va_arg(l, char *);
+    if (str == NULL)
+	    str = "(null)";
 
-    if (!s)
-        s = "(null)";
-    return (_puts(s));
+    for (i = 0; str[i]; i++)
+	    count += _putchar(str[i]);
+
+    return (count);
 }
 
 /**
@@ -26,9 +30,9 @@ int print_string(va_list l, flags_t *f)
  * if a flag is passed to _printf
  * Return: number of char printed
  */
-int print_char(va_list l, flags_t *f)
+int print_char(va_list l)
 {
-    (void)f;
-    _putchar(va_arg(l, int));
-    return (1);
+    int c = va_arg(l, int);
+
+    return (_putchar(c));
 }
