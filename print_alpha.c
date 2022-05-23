@@ -10,7 +10,8 @@
  */
 int print_string(va_list l, flags_t *f)
 {
-    char *s = va_arg(l, char *);
+    char *s;
+    s = va_arg(l, char *);
 
     (void)f;
 
